@@ -3,6 +3,7 @@ package com.game;
 public class KillingQuest extends  Quests {
     private String monster;
     private int monsterCount;
+    private Hero hero;
 
     KillingQuest(String monster, int monsterCount) {
         this.monster = monster;

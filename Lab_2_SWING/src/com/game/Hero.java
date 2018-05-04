@@ -4,16 +4,23 @@ public class Hero {
     private String Race;
     private String Specialization ;
     private int Level;
-    private Location location;
-    private KillingQuest killingQuest = new KillingQuest("zerg", 20);
-    private TravelQuest travelQuest = new TravelQuest();
+    private Location location = null;
+    private KillingQuest killingQuest;
+    private TravelQuest travelQuest;
 
-    public Hero(String _race,String _spec,int _lev,int _X,int _Y){
-        this.Race =_race;
-        this.Specialization =_spec;
-        this.Level =_lev;
-        this.location = new Location(_X, _Y);
+    public Hero(){
+        this.Race = "Human";
+        this.Specialization="Archer";
+        this.Level =1;
+        this.location = new Location(1,1);
     }
+
+    //public Hero(String _race,String _spec,int _lev,int _X,int _Y){
+    //    this.Race =_race;
+    //    this.Specialization =_spec;
+     //   this.Level =_lev;
+     //   this.location = new Location(_X, _Y);
+   // }
 
     public String getRace(){
         return Race;
@@ -38,13 +45,26 @@ public class Hero {
         this.Level = level;
     }
 
-    public String getQuest(char ch) {
+    public int getLocationX(){
+        return location.getX();
+    }
 
-        if(ch == 'k') {
+    public int getLocationY() {
+        return location.getY();
+    }
+
+    public  void setLocation(int _x, int _y){
+        this.location = new Location(_x,_y);
+    }
+
+    public String getQuest() {
+        int count =1;
+        if(count == 2) {
             return killingQuest.activateQuest();
         }
 
-        if(ch == 't') {
+        if(count == 1) {
+            count++;
             return travelQuest.activateQuest();
         }
 

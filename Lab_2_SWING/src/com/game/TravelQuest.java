@@ -4,21 +4,25 @@ public class TravelQuest extends Quests{
     private Location location;
     private float time;
 
-    TravelQuest() {
-        location = new Location(45,12);
-        time = 12.5f;
+    TravelQuest(Location _locate, float _time) {
+        location = _locate;
+        time = _time;
     }
 
     public float getTime() {
         return time;
     }
 
-    public Location getLocation() {
-        return location;
+    public int getLocationX() {
+        return location.getX();
     }
 
-    public void setLocation(String location) {
-        location = location;
+    public int getLocationY(){
+        return location.getY();
+    }
+
+    public  void setLocation(int _x,int _y){
+        this.location = new Location(_x,_y);
     }
 
     public void setTime(float time) {

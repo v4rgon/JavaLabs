@@ -6,7 +6,7 @@ public class Quests {
 
     Quests() {
         startQuest = "quest was started";
-        finalQuest = "quest complited";
+        finalQuest = "quest completed";
     }
 
 
