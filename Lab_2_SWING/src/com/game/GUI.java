@@ -5,25 +5,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//import static com.game.SwingConsole.run;
+
 
 public class GUI extends JFrame{
 
-    private JTextArea heroStats = new JTextArea("Race:\nSpecialization:\nLevel\nLoacation: X: Y: \n");
+    private JTextArea heroStats = new JTextArea("Race:\nSpecialization:\nLevel\nLocation: X: Y: \n");
     private JLabel firstQuest = new JLabel("You should travel to "),
-            questLabel = new JLabel("Quest"),
-            secondQuest = new JLabel("Kill zergs");
+            questLabel = new JLabel("Quests"),
+            secondQuest = new JLabel(" ");
     private JButton acceptButtonK = new JButton("Accept"),
                     acceptButtonT = new JButton("Accept"),
                     goButton = new JButton("Go"),
                     killButton = new JButton("Kill");
     private Hero hero = new Hero();
-    private Location locate = new Location(1,1);
-    private TravelQuest tq = new TravelQuest(new Location(12,23),14f);
-    private KillingQuest kq = new KillingQuest("Zerg",0);
+    private TravelQuest tq = new TravelQuest(new Location((1 + (int) (Math.random() * 20)),(1 + (int) (Math.random() * 20))),14f);
+    private KillingQuest kq = new KillingQuest("Zerg",(5 + (int) (Math.random() * 20)));
     private Quests quests = new Quests();
 
-    //private boolean flag = true;
 
     /**
      * Конструктор для создания экземпляра класс <b> GUI</b>
@@ -137,10 +135,9 @@ public class GUI extends JFrame{
 
            else {
                hero.setLevel(hero.getLevel()+1);
-               questLabel.setVisible(true);
-               acceptButtonT.setVisible(true);
                secondQuest.setVisible(false);
                killButton.setVisible(false);
+               heroStats.setAlignmentX(Component.CENTER_ALIGNMENT);
            }
            secondQuest.setText("Kill "+kq.getMonsterCount() +" " + kq.getMonster());
            heroStats.setText("Race: " +hero.getRace() + "\nSpecialization: " + hero.getSpecialization() +"\nLevel: " + hero.getLevel() + "\nLocation: X: " + hero.getLocationX() +" Y: " + hero.getLocationY());
