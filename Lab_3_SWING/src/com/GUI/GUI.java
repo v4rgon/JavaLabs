@@ -137,16 +137,19 @@ public class GUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
 
             secondQuest.setVisible(true);
-            if (kqb.checkQuest() != kqb.questComplete())
+            if (kqb.checkQuest() != kqb.endQuest()) {
                 kqb.killMonster();
-
-            else {
-                hero.setLevel(hero.getLevel() + 1);
-                secondQuest.setVisible(false);
-                killButton.setVisible(false);
-                heroStats.setAlignmentX(Component.CENTER_ALIGNMENT);
+                if(kqb.getMonsterCount()==0)
+                {
+                    hero.setLevel(hero.getLevel() + 1);
+                    secondQuest.setVisible(false);
+                    killButton.setVisible(false);
+                    heroStats.setAlignmentX(Component.CENTER_ALIGNMENT);
+                }
             }
-            secondQuest.setText("Kill " + kqb.getMonsterCount() + " " + boar.getMonsterType());
+
+
+            secondQuest.setText("Kill " + kqb.getMonsterCount() + " " + boar.getMonsterType()+ " "+boar.getMonsterHealth()+" Level "+boar.getMonsterLevel());
             heroStats.setText("Race: " + hero.getRace() + "\nSpecialization: " + hero.getSpecialization() + "\nLevel: " + hero.getLevel() + "\nLocation: X: " + hero.getLocationX() + " Y: " + hero.getLocationY());
 
         }
@@ -155,7 +158,7 @@ public class GUI extends JFrame {
     class goButtonOnClick implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-        if (tq.checkCordinates(new Location(tq.getLocationX(), tq.getLocationY())) == tq.questComplete()) {
+        if (tq.checkCordinates(new Location(tq.getLocationX(), tq.getLocationY())) == tq.endQuest()) {
                 hero.travel(new Location(tq.getLocationX(), tq.getLocationY()));
 
                 heroStats.setVisible(true);

@@ -1,7 +1,7 @@
 package com.GUI;
 /**
  * Класс <b>Мейн</b>, необходимый для создания окошка
- * @author Vavashka23
+ * @author v4rgon
  * @version 1.0
  */
 public class Main {

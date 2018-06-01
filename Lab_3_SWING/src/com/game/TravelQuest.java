@@ -29,9 +29,9 @@ public class TravelQuest extends Quests{
         this.time = time;
     }
 
-    public int checkCordinates(Location place){
+    public String checkCordinates(Location place){
         if(place.getX() == location.getX() && place.getY() == location.getY()) {
-            return questComplete();
+            return endQuest();
         }
         return "";
     }

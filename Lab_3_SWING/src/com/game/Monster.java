@@ -37,22 +37,32 @@ public abstract class Monster {
         this.monsterType = monsterType;
     }
 
-    public void getDamage()
+    public int getDamage()
     {
-        monsterHealth-=25;
-        Die();
+        if(getMonsterHealth()>0)
+        {
+            setMonsterHealth(monsterHealth-25);
+
+
+            if(getMonsterHealth()==0)
+            {
+                Die();
+                return -1;
+            }
+            return 0;
+
+        }
+        return 0;
     }
 
-    private void Die()
+    private int Die()
     {
 
-        if(getMonsterHealth()<0)
-        {
             if(getMonsterType()=="Werewolf")
             setMonsterHealth(150);
             else
                 setMonsterHealth(50);
-            killingQuest.setMonsterCount(killingQuest.getMonsterCount()-1);
-        }
+            return -1;
+
     }
 }

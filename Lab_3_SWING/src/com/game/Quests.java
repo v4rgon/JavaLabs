@@ -30,7 +30,8 @@ abstract class Quests extends Hero{
         return startQuest;
     }
 
-    public void endQuest(){
+    public String endQuest(){
+        return questComplete();
 
     }
 

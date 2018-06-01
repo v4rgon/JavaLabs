@@ -17,14 +17,22 @@ public class KillingQuest extends  Quests {
         this.monsterCount = monsterCount;
     }
 
-    public void killMonster(){
-        monster.getDamage();
+    public int killMonster(){
+        if(monster.getDamage() == -1){
+            monsterCount--;
+            if (monsterCount==0) return 0;
+            return 1;
+        }
+
+        return 0;
     }
 
-    public void checkQuest() {
+    public String checkQuest() {
         if(monsterCount == 0) {
-            return questComplete();
+            return endQuest();
         }
-        else return "";
+        else {
+            return "";
+        }
     }
 }
