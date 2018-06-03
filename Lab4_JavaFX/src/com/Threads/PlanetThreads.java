@@ -1,15 +1,16 @@
 package com.Threads;
 
-public class PlanetThreads extends Thread {
-    Thread planet;
+public class PlanetThreads extends MainThread {
+    //Thread planet;
     private int day;
     private int year = 0;
     private String planetName;
-    private String gm = "Good Morning!";
-    private String nw = "Happy New Year!";
 
-    PlanetThreads(String name){
-        planet = new Thread(this,name);
+    private MainThread mainThread;
+
+    public PlanetThreads(String name, MainThread mainThread){
+        this.planetName=name;
+        this.mainThread = mainThread;
     }
 
     public void setPlanetName(String name) {
@@ -36,32 +37,29 @@ public class PlanetThreads extends Thread {
         this.year = year;
     }
 
-    synchronized public String getGm() {
-        return gm;
-    }
 
-    synchronized public String getNw() {
-        return nw;
-    }
 
     @Override
     public void run() {
-        setPlanetName(planet.getName());
-        System.out.println(planet.getName()+" Starting");
+
+        System.out.println(getPlanetName()+" Starting");
         try {
             while(day !=365)
             {
+                sleep(100);
                 setDay(day+1);
-                Thread.sleep(1);
-                System.out.println(planet.getName()+" Good Morning!" + day);
+
+
+                System.out.println(getPlanetName()+" Good Morning!" + day);
                 if(day !=0&& day %364 == 0) {
                     setYear(year+1);
-                    System.out.println(planet.getName() + " Happy New Year!" + day );
+                    System.out.println(getPlanetName() + " Happy New Year!" + day );
                 }
             }
         }catch (InterruptedException exc){
-            System.out.println(planet.getName()+" interrupted");
+            System.out.println(getPlanetName()+" interrupted");
         }
-        System.out.println(planet.getName()+" terminated");
+        System.out.println(getPlanetName()+" terminated");
     }
+
 }

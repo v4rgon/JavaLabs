@@ -52,7 +52,6 @@ public class GUI extends JFrame {
         c.insets = new Insets(0, 10, 0, 0);
         gbl.setConstraints(heroStats, c);
         add(heroStats);
-        //kq.setMonsterCount(12);
         heroStats.setText("Race: " + hero.getRace() + "\nSpecialization: " + hero.getSpecialization() + "\nLevel: " + hero.getLevel() + "\nLocation: X: " + hero.getLocationX() + " Y: " + hero.getLocationY());
 
         acceptButtonT.addActionListener(new acceptTravelQuestButton());
